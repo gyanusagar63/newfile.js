@@ -1,0 +1,70 @@
+ const scriptURL = 'https://script.google.com/macros/s/AKfycbwoho15TXam0JwZUNhYt8ysoOQfrP_ylMyhvAgTT4rFynHvkpCLoKSaPzUIuVuU_Y1P/exec';
+     
+     const form = document.forms['google-sheet'];
+     
+     
+     
+     form.addEventListener('submit', e => {
+     
+     e.preventDefault();
+     
+     fetch(scriptURL, {
+     
+     method: 'POST',
+     
+     body: new FormData(form)
+     
+     })
+     
+     .then(response => {
+     
+     alert("Thanks for Contacting us..! We Will Contact You Soon...");
+     
+     
+     
+     navigateToPage();
+     
+     })
+     
+     .catch(error => console.error('Error!', error.message));
+     
+     });
+     
+     function navigateToPage() {
+     
+     var selectedRadio = document.querySelector('input[name="PaymentMethod"]:checked');
+     
+     if (selectedRadio) {
+     
+     var selectedValue = selectedRadio.value;
+     
+     switch (selectedValue) {
+     
+     case "page1":
+     
+     window.location.href = "https://ostist.blogspot.com/2023/08/qr-payment-for-product-buy.html";
+     
+     break;
+     
+     case "page2":
+     
+     window.location.href = "upi://pay?pa=gyanusagar2018@oksbi&pn=OStist&am=30&cu=INR";
+     
+     break;
+     
+     case "page3":
+     
+     window.location.href = "upi://pay?pa=gayansagar20@paytm&pn=OStist&am=25&cu=INR";
+     
+     break;
+     
+     default:
+     
+     break;
+     
+     }
+     
+     }
+     
+     }
+     
